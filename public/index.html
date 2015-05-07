@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>Here Customer Voices</title>
+    <style type="text/css">	      
+	  .sapUiMicroSmallMarginEnd {
+		  margin-right: 1rem !important;
+		}    
+  	</style>
+    <script src="https://openui5.hana.ondemand.com/resources/sap-ui-core.js" 
+      id="sap-ui-bootstrap"
+      data-sap-ui-libs="sap.m, sap.ui.layout, sap.ui.core" 
+      data-sap-ui-theme="sap_bluecrystal"></script>
+    <script>
+      jQuery.sap.registerModulePath("ctu.blue.customervoice", './views');
+      sap.ui.localResources("views");
+      
+      var view = sap.ui.view({viewName:"views.page", type:sap.ui.core.mvc.ViewType.XML});
+      view.placeAt("content");
+    </script>
+  </head>
+  <body class="sapUiBody">
+  	<div id="content"></div>
+  </body>
+</html>

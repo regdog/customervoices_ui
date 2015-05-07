@@ -1,0 +1,8 @@
+*.log
+.DS_Store
+.project
+/node_modules/*
+!/node_modules/grunt-raml2restify
+/coverage
+/.sonar
+/reports

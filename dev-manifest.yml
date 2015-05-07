@@ -1,0 +1,9 @@
+---
+applications:
+- name: WishList-Java-UI
+  buildpack: https://github.com/drnic/staticfile-buildpack.git
+  instances: 1
+  memory: 64MB
+  host: ctu-blue-customervoices-ui
+  domain: cf1.hybris.com
+  path: ./public/

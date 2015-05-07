@@ -1,0 +1,136 @@
+<mvc:View
+  height="100%"
+  controllerName="ctu.blue.customervoice.page"
+  xmlns:l="sap.ui.layout"
+  xmlns:f="sap.ui.layout.form"
+  xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page enableScrolling="false"
+    id="idPage"
+    navButtonPress="onNavBtnPress"
+    title="Hear Customer Voices" >
+    <!-- this CSS class add a standard spacing to all the page content -->
+
+    <content>
+      <ObjectHeader
+        title="Cloud Bootcamp@Chendu">
+        <attributes>
+          <ObjectAttribute title="Participants" text="30" />
+          <ObjectAttribute title="Date" text="2015-05-07" />
+        </attributes>
+        <statuses>
+          <ObjectStatus title="Status" text="Success" state="Success" />
+        </statuses>
+      </ObjectHeader>
+      <IconTabBar
+        class="sapUiSmallMarginBottom sapUiResponsiveContentPadding">
+        <items>
+          <IconTabFilter
+          	id="idBrowseTab"
+            text="Browse Voices">
+            <HBox>
+	            <RadioButtonGroup columns="6" class="sapUiMediumMarginBottom" select="onRadioButtonSelect">
+			        <buttons>
+			          <RadioButton id="RB1-0" text="All Voices"/>
+			          <RadioButton id="RB1-1" text="Bootcamp Ideas"/>
+			          <RadioButton id="RB1-2" text="Bootcamp Materials" />
+			          <RadioButton id="RB1-3" text="Bootcamp Schedule" />
+			        </buttons>
+			    </RadioButtonGroup>
+			    <CheckBox text="Sort by Votes" selected="false" select="onSorterSelect"/>
+            </HBox>          
+		    
+			<Table id="idVoiceTable" 
+				items="{/voices}"
+				growing="true"
+				growingThreshold="6">
+				<columns>
+					<Column width="1em"/>
+					<Column minScreenWidth="Tablet" demandPopin="true"/>
+					<Column minScreenWidth="Tablet" demandPopin="true" visible="false"/>
+				</columns>
+				<items>
+					<ColumnListItem type="Active" press="onRowPress">
+						<cells>
+							<FlexBox direction="Column" alignItems="Start">
+								<items>
+									
+									<Button text="{votes}" type="Emphasized" />
+									<FlexBox alignItems="Start" justifyContent="Start">
+										<items>
+											<HBox class="sapUiSmallMarginEnd">
+												<core:Icon	
+											      src="sap-icon://employee-approvals"
+											      class="size1"
+											      color="#64E4CE"
+											      press="onLikePress" />
+											</HBox>
+											<HBox class="sapUiMicroSmallMarginEnd">
+												<core:Icon
+											      src="sap-icon://employee-rejections"
+											      class="size1"
+											      color="#031E48"
+											      press="onDislikePress" />
+											</HBox>		            						
+										</items>
+									</FlexBox>
+									<Text id="idVotedText" text="" />
+								</items>
+							</FlexBox>
+							
+							<ObjectIdentifier 
+						            title="{title}"
+						            text="{description}" />
+						    
+						    <Text text="{category}" />      				           
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+          </IconTabFilter>
+          <IconTabFilter
+          	id="idFormTab"
+            text="Submit a Voice">
+			<f:SimpleForm
+              minWidth="1024"
+              maxContainerCols="2"
+              layout="ResponsiveGridLayout" >
+              <f:title>
+                <core:Title text="Submit Your Voice" />
+              </f:title>
+              <VBox width="60%">
+	              <Text text="Title" />
+			      <Input
+			        id="idTitleInput"
+			        class="sapUiSmallMarginBottom"
+			        type="Text"
+			        placeholder="Enter Title ..."/>
+			        <Text text="Description" />
+			        <TextArea id="idDescriptionInput" width="100%" rows="8" />
+			        <Text text="Category" />
+			        <RadioButtonGroup columns="1" class="sapUiMediumMarginBottom" select="onFormRadioButtonSelect">
+				        <buttons>
+				          <RadioButton id="1" text="Bootcamp Ideas"/>
+				          <RadioButton id="2" text="Bootcamp Materials" />
+				          <RadioButton id="3" text="Bootcamp Schedule" />
+				        </buttons>
+			        </RadioButtonGroup>
+			        <Input id="idCategoryInput" type="Text" visible="false" value="Bootcamp Ideas"/>
+			        <Button text="Sumbit" type="Emphasized" press="onSubmitVoice" />
+              </VBox>
+              
+    
+            </f:SimpleForm>
+          </IconTabFilter>
+          <!-- 
+          <IconTabFilter
+            text="Contributors">
+            <FeedInput />
+          </IconTabFilter>
+          -->
+        </items>
+      </IconTabBar>
+    </content>
+  </Page>
+</mvc:View>
