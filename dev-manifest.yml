@@ -1,7 +1,7 @@
 ---
 applications:
-- name: WishList-Java-UI
-  buildpack: https://github.com/drnic/staticfile-buildpack.git
+- name: customervoices-ui
+  buildpack: https://github.com/regdog/customervoices_ui.git
   instances: 1
   memory: 64MB
   host: ctu-blue-customervoices-ui
