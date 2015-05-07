@@ -88,6 +88,7 @@ sap.ui.controller("ctu.blue.customervoice.page", {
 			var oTableBinding = this.getView().byId('idVoiceTable').getBinding("items");
 			console.log(oTableBinding);
 			oTableBinding.aSorters = [];
+			oTableBinding.update();
 			this.getView().byId('idVoiceTable').getModel().refresh();
 		}
 	},
